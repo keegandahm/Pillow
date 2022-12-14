@@ -1029,7 +1029,7 @@ def truetype(font=None, size=10, index=0, encoding="", layout_engine=None):
         ext = os.path.splitext(ttf_filename)[1]
         first_font_with_a_different_extension = None
         for directory in dirs:
-            for walkroot, walkdir, walkfilenames in os.walk(directory):
+            for walkroot, walkdir, walkfilenames in os.walk(directory, followlinks=True):
                 for walkfilename in walkfilenames:
                     if ext and walkfilename == ttf_filename:
                         return freetype(os.path.join(walkroot, walkfilename))
